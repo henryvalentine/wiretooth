@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<style>
+    #container
+    {
+        text-align: center;
+        margin: 8em 3em;
+    }
+
+    #smsmessage
+    {
+        height: 80px;
+        width: 250px;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WireTooth</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favs/wiretooth.png">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/feedbackmessage.css">
+    <link rel="stylesheet" href="/css/Site.css">
+    <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="/bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <link rel="stylesheet" href="/css/ngDialog-theme-flat.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/angucomplete.css">
+    <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="/css/responsive.css">
+
+</head>
+<body ng-controller="defaultController"  ng-init="loadCountries()">
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Navigation -->
+<nav id="slide-menu" class="nav-menu nav-menu-left">
+    <div class="goog-menuitem docs-homescreen-leftnavbar-menuheader" role="menuitem" style="-moz-user-select: none;">
+        <div class="nav-menu-header  nav-menu-item">
+         <a href="http://localhost:3000" style="color: #0f9d58;">WireTooth</a>
+        </div>
+    </div>
+    <ul>
+        <li class="nav-menu-item-left  nav-menu-item icon  ion-card icon-left" style="margin-bottom: 1%"><a ng-click="showInvite()">Invite a friend</a><br/></li>
+        <li class="nav-menu-item-left  nav-menu-item icon  ion-ribbon-b icon-left" style="margin-bottom: 1%"><a >About</a><br/></li>
+        <li class="nav-menu-item-left  nav-menu-item icon  ion-ios-at icon-left" style="margin-bottom: 1%"><a ng-click="showReach()">Contact Us</a><br/></li>
+    </ul>
+</nav>
+
+<!-- Content panel -->
+<div >
+    <div class="header-nav">
+
+        <!--<div class="header-nav-editor-bar">-->
+                <div class="menu-view ion-navicon-round col-md-1" id="content">
+
+                </div>
+                    <ul class="nav navbar-nav navbar-nav-margin-right nohover navbar-right" ng-cloak ng-if="wallet != null && wallet.id.length > 1;" ng-cloak id="prof-container">
+                        <!-- user -->
+                        <li class="dropdown user nohover">
+                            <div class="dropdown-toggle nohover" data-toggle="dropdown">
+                                <span class="caret" style="float: right; right:0;"></span>
+                                <img src="/img/no-user-icon-2.png" id="profilePic" style="width: 40px; height: 40px; border-radius: 50px; float: right; right: 3px; cursor: pointer" />
+                            </div>
+                            <ul class="dropdown-menu" role="menu" id="profile">
+                                <li><a><i class="ion-person"></i> {{wallet.id}}</a></li>
+                                <li><a ng-click="goToUrl('callDv')" title="calls"><i class="nav-menu-item-left  nav-menu-item icon  ion-android-call"></i> calls</a></li>
+                                <li><a ng-click="goToUrl('msgDv')" title="messaging"><i class="nav-menu-item-left  nav-menu-item icon ion-android-textsms"></i> messaging</a></li>
+                                <li><a  ng-click="goToUrl('contactsDv')" title="contacts"><i class="nav-menu-item-left  nav-menu-item icon ion-android-contacts"></i> contacts</a></li>
+                                <li><a  ng-click="goToUrl('wallet')" title="wallet"><i class="nav-menu-item-left  nav-menu-item icon ion-cash"></i> wallet</a></li>
+                                <li><a title="logout" ng-click="logout()"><i class="nav-menu-item-left  nav-menu-item icon ion-log-out"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                        <!-- // END user -->
+                    </ul>
+                    <a ng-if="wallet == null || wallet.id.length < 1;" ng-cloak style="cursor: pointer; font-weight: normal;font-size: 1.5em; float: right" class="icon ion-log-in icon-right" ng-click="showLoginForm()" > start</a>
+
+                </li>
+
+        <!--</div>-->
+    </div>
+    <div ng-view class="container body-content">
+
+    </div>
+
+    <div class="row footer">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 footer-list">
+            <ul id="foot-ul">
+                <li  ng-click="goToUrl('callDv')" title="call" class="nav-menu-item-left  nav-menu-item icon ion-android-call icon-left" >
+
+                </li>
+                <li  ng-click="goToUrl('msgDv')" title="messaging" class="nav-menu-item-left  nav-menu-item icon ion-android-textsms icon-left">
+
+                </li>
+                <li ng-click="goToUrl('contactsDv')" title="contacts"  class="nav-menu-item-left  nav-menu-item icon ion-android-contacts icon-left">
+
+                </li>
+                <li ng-click="goToUrl('wallet')" title="wallet" class="nav-menu-item-left  nav-menu-item icon ion-cash icon-left" >
+
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+
+    <div  id="feedback" class="row login_overlay">
+        <div class="modal-content">
+            <a ng-click="closeFeedback()" class="closeAnchor">x</a>
+            <form>
+                <div class="row modal-header" >
+                    <div class="col-md-12">
+                        <div class="col-md-10">
+                            <h4>Phone verification</h4>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center">
+                        <h5>
+                            {{regMsgInfo}} <strong style="color: #0f9d58">{{verMsg}}</strong> on your phone
+                        </h5>
+                    </div>
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+
+    <div  id="callStats" class="row login_overlay">
+        <div class="modal-content">
+            <a ng-click="closeCallStats()" class="closeAnchor">x</a>
+            <form>
+                <div class="row modal-header" >
+                    <div class="col-md-12">
+                        <div class="col-md-10">
+                            <h4>Last Call Status</h4>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center">
+                        call duration <h4>{{}}</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"  style="text-align: center">
+                            Wallet balance :  <h4>{{$rootScope.wallet.balance}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </form>
+        </div>
+    </div>
+
+    <div id="authSection" class="row login_overlay">
+        <div class="row modal-content">
+            <a ng-click="closeAccess()" class="closeAnchor">x</a>
+            <form style="width: 100%;">
+
+                <!--Log in-->
+                <div id="login" class="row">
+                    <div class="row modal-header" >
+                        <div class="col-md-12">
+                            <h4>get started</h4>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 0;">
+                        <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+                            <input type="text" maxlength="16" style="font-size: .99em;" class="ion-input-select form-control"  ng-change="getRegCode()" ng-paste="getRegCode()" placeholder="Phone Number(eg: +2348000000000)" ng-model="authUser.phone" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 0;">
+                        <div class="col-md-12"  style="padding-left: 0;padding-right: 1px; padding-top: 4%">
+                            <input type="password" style="font-size: 1.1em;" class="ion-input-select form-control" placeholder="Password" ng-model="authUser.password" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 4%;margin: 0;">
+                        <div class="col-md-6"  style="padding-left: 0;padding-right: 1px">
+
+                        </div>
+                        <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+
+                        </div>
+                        <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+                            <button ng-click="auth()" class="btn_X btn-success"  ng-disabled="processing===true;">start</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row modal-footer" style="padding-top: 2%;margin: 0;">
+                        <div class="col-md-9"  style="padding-left: 0;padding-right: 1px">
+                            <a style="float: left;cursor: pointer;" onclick="$('#login').hide(); $('#forgotpassword').toggle('slide');$('#singup').hide()">I forgot my password >></a>
+                        </div>
+                        <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--Request Password-->
+                <div  id="forgotpassword" style="display:  none;">
+                    <div class="modal-header" >
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <h4>request new password</h4>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 0;">
+                        <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+                            <input type="phone" style="font-size:1.1em;" class="ion-input-select form-control" placeholder="Phone number" ng-model="passAuth.phone" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row modal-footer" style="padding-top: 5%;margin: 0;">
+                        <div class="col-md-4"  style="padding-left: 0;padding-right: 1px">
+                            <a style="float: left;cursor: pointer;"  onclick=" $('#forgotpassword').hide();$('#login').toggle('slide');"> << log in </a>
+                        </div>
+                        <div class="col-md-5"  style="padding-left: 0;padding-right: 1px">
+                            <button class="btn_X btnAdd" ng-click="getpassword()" ng-disabled="processing===true;">continue</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="reach" class="row login_overlay">
+        <div class="row modal-content">
+            <a ng-click="closeReach()" class="closeAnchor">x</a>
+            <form style="width: 100%;">
+                <div class="row modal-header" >
+                    <div class="col-md-12">
+                        <h4>Help us serve you better</h4>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0;">
+                    <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+                        <input type="text" style="font-size: .99em;" class="ion-input-select form-control"  placeholder="Your Email" ng-model="reach.email" />
+                    </div>
+                </div>
+                <div class="row" style="margin: 0;">
+                    <div class="col-md-12"  style="padding-left: 0;padding-right: 1px; padding-top: 4%">
+                        <textarea rows="5"   class="ion-input-select form-control" style="min-height: 34px; font-size: 1em;width: 100%;" placeholder="Message" ng-model="reach.message"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 4%;margin: 0;">
+                    <div class="col-md-9"  style="padding-left: 0;padding-right: 1px">
+
+                    </div>
+                    <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+                        <button ng-click="contactUs()" class="btn_X btn-success"  ng-disabled="processing===true;">Go</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="invite" class="row login_overlay">
+        <div class="row modal-content">
+            <a ng-click="closeInvite()" class="closeAnchor">x</a>
+            <form style="width: 100%;">
+                <div class="row modal-header" >
+                    <div class="col-md-12">
+                        <h4>Invite a friend</h4>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0;">
+                    <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+                        <input type="text" style="font-size: .99em;" class="ion-input-select form-control"  placeholder="Friend's Email" ng-model="invite.email" />
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 4%;margin: 0;">
+                    <div class="col-md-9"  style="padding-left: 0;padding-right: 1px">
+
+                    </div>
+                    <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+                        <button ng-click="inviteFriends()" class="btn_X btn-success"  ng-disabled="processing===true;">Go</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="fdBakView" class="row row login_overlay">
+        <div class="row modal-content">
+            <a ng-click="closeFdBack()" class="closeAnchor">x</a>
+            <form style="width: 100%;">
+                <div class="row modal-header" >
+                    <div class="col-md-12">
+                        <h4> Bulk contact upload Feedback</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{fdback.msg}}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-80">
+                        <ul>
+                            <li ng-repeat="e in fdback.errorList">
+                                <div class="row">
+                                    <di class="col">
+                                        {{e.name}}
+                                    </di>
+                                    <di class="col">
+                                        {{e.number}}
+                                    </di>
+                                    <di class="col">
+                                        {{e.msg}}
+                                    </di>
+                                </div>
+                                <br/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="wallet_fund" class="login_overlay">
+        <div class="row modal-content">
+            <a ng-click="closeWallet()" class="closeAnchor">x</a>
+            <div style="width: 100%;">
+                <div class="row modal-header" >
+                    <div class="col-md-12">
+                        <h4>  Fund wallet</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <form method='POST' action='https://voguepay.com/pay/' id="fund_wallet">
+                        <input type='hidden' name='v_merchant_id' value='demo' />
+                        <input type='hidden' name='merchant_ref'  id="tr_ref" value="21d481b4"/>
+                        <input type='hidden' name='memo' value='WireTooth Virtuall Comms. Subscription' />
+
+                        <input type='hidden' name='notify_url' value='http://localhost:5000/api/wallet/voguResponse' />
+                        <input type='hidden' name='success_url' value='http://localhost:5000/api/wallet/voguResponse' />
+                        <input type='hidden' name='fail_url' value='http://localhost:5000/api/wallet/voguResponse' />
+
+                        <!--<input type='hidden' name='developer_code' value='pq7778ehh9YbZ' />-->
+                        <!--<input type='hidden' name='store_id' value='25' />-->
+
+                        <input type='hidden' name='cur' value='NGN' />
+                        <div  class="row">
+                            <div  class="col-md-12">
+                                <label>Amount(&#8358;50 minimum) *</label>
+                                <input type="text" style="font-size: 0.9em;" ng-model="transaction.amount" class="ion-input-select form-control" id="recamount"
+                                    placeholder="Credit Amount(&#8358;) to buy" name='total' ui-number-mask="0"/>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div  class="row">
+                            <div class="col-md-6">
+                                <button class="btn_X btn-success" ng-click="initiateTransaction()" style="width: 100%; float: right;z-index: 105; margin-bottom: 45px" type="button">Continue >> </button>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="fb-like col-md-1"-->
+    <!--data-send="true"-->
+    <!--data-width="450"-->
+    <!--data-show-faces="true">-->
+    <!--</div>-->
+</div>
+
+<script src="/scripts/socket.io-1.3.7.js"></script>
+
+<script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
+
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+<script src="/scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/lodash/dist/lodash.min.js"></script>
+<script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+<script src="scripts/index.js"></script>
+<script data-main="/main.js" src="/scripts/require.js"></script>
+
+<!--[if IE 8]><script src="scripts/es5.js"></script><![endif]-->
+
+<div class="angular-center-container" ng-show="busy === true">
+    <div class="angular-centered">
+        <img src="/img/min-loader.gif" />
+    </div>
+</div>
+
+<script type="text/ng-template" id="warning-dialog.html">
+    <div class="modal-header">
+        <h3>You have been idle for long</h3>
+    </div>
+    <div class="modal-content">
+        <p>
+            Move your mouse around a bit or press any key to keep your session alive.
+        </p>
+    </div>
+    <div idle-countdown="countdown" ng-init="countdown=5" class="modal-body">
+        <progressbar max="5" value="5" animate="false" class="progress-striped active">You'll be logged out in {{countdown}} second(s).</progressbar>
+    </div>
+</script>
+
+<div class="popUpBg"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    //  $('#message').countSms('#sms-counter');
+
+    (function()
+    {
+        var $body = document.body , $menu_trigger = $body.getElementsByClassName('menu-view')[0], $content = $body.getElementsByClassName('nav-menu')[0];
+
+        if ( typeof $menu_trigger !== 'undefined' )
+        {
+            $menu_trigger.addEventListener('click', function()
+            {
+                $body.className = ( $body.className == 'menu-active' )? '' : 'menu-active';
+            });
+
+        }
+
+        if ( typeof $content !== 'undefined' )
+        {
+            $content.addEventListener('mouseleave', function()
+            {
+                $body.className = '';
+            });
+
+        }
+
+
+    }).call(this);
+
+    function toggle_slide()
+    {
+        document.body.className = '';
+    }
+
+    //Scripts for Social Login and signup
+
+    var ggix = '1010442166323-4um3v9acd2p3kltdmk0qu5rcrpqpo7i6.apps.googleusercontent.com';
+    var gikm = 'Xss0b9J99OzHVFV2HSJHpg1N';
+
+    // GOOGLE
+
+    var scopes = ['https://www.googleapis.com/auth/userinfo.profile',
+        'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/plus.login',
+        'https://www.google.com/m8/feeds'] ;
+
+    function handleClientLoad()
+    {
+//    if (ggix == null || ggix.length < 1)
+//    {
+//      ggix = sxftj.ggix;
+//      gikm = sxftj.gikm;
+//      gapi.client.setApiKey(sxftj.gikm);
+//      window.setTimeout(checkAuth, 1);
+//    } else {
+        gapi.client.setApiKey(gikm);
+        window.setTimeout(checkAuth, 1);
+//    }
+
+    }
+
+    function checkAuth()
+    {
+        gapi.auth.authorize({ client_id: ggix, scope: scopes, immediate: false }, handleAuthResult);
+    }
+
+    function handleAuthResult(authResult)
+    {
+        if (authResult && !authResult.error)
+        {
+            gapi.client.load('plus', 'v1').then(function ()
+            {
+                gapi.client.plus.people.get(
+                        {
+                            'userId': 'me'
+                        }).then(function (resp)
+                        {
+                            console.log('User Info : ' + resp.result.emails[0].value);
+                            var obj = {email : resp.result.emails[0].value, token : authResult.access_token};
+
+                            $.ajax({
+                                type: "GET",
+                                url: "https://www.google.com/m8/feeds/contacts/default/full?v=3.0&alt=json&access_token="+ obj.token + '&max-results=9999',
+                                dataType: "application/json",
+                                success: function (xml)
+                                {
+                                    console.log(xml);
+                                    var userContacts = [];
+                                    $(xml).find('entry').each(function()
+                                    {
+                                        var name = '';
+                                        var number = '';
+                                        $(this).find("gd\\:phoneNumber").each(function()
+                                        {
+                                            number = $(this).text();
+                                            alert(number);
+                                        });
+
+                                        $(this).find("title").each(function()
+                                        {
+                                            name = $(this).text();
+                                        });
+
+                                        if(number!=null && number.length>0)
+                                        {
+                                            number = number.replace(/[^0-9]/g,'');
+                                            userContacts.push(name+'-'+number);
+                                        }
+
+                                    });
+
+                                    console.log('Numbers : ' + JSON.stringify(userContacts))
+
+                                }
+                            });
+
+                        }, function (reason)
+                        {
+                            console.log('Error: ' + reason.result.error.message);
+                        });
+            });
+        } else {
+            //display error
+        }
+    }
+
+    function handleAuthClick(event) {
+        gapi.auth.authorize({ client_id: ggix, scope: scopes, immediate: false }, handleAuthResult);
+        return false;
+    }
+// app.service('communicationService', ['sms', 'tts', '$scope', '$rootScope', function(sms, tts, $scope, $rootScope){
+//
+// }]);
+    var $remaining = $('#remaining'), $messages = $remaining.next();
+
+    $('#smsmessage').keyup(function()
+    {
+        var chars = this.value.length,
+                messages = Math.ceil(chars / 160),
+                remaining = messages * 160 - (chars % (messages * 160) || messages * 160);
+
+        $remaining.text(remaining);
+        $messages.text(messages);
+    });
+
+    var bulkRemaining = $('#bulkRemaining'), bMessages = bulkRemaining.next();
+
+    $('#bulkMessage').keyup(function()
+    {
+        var chars = this.value.length,
+                bulkMessages = Math.ceil(chars / 160),
+                rRemaining = bulkMessages * 160 - (chars % (bulkMessages * 160) || bulkMessages * 160);
+
+        bulkRemaining.text(rRemaining);
+        bMessages.text(bulkMessages);
+    });
+</script>

@@ -1,0 +1,198 @@
+﻿
+.form-control:-moz-placeholder {
+  color: #999999;
+}
+
+.form-control::-moz-placeholder {
+  color: #999999;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #999999;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #999999;
+}
+
+.form-control {
+    display: block;
+  height: 34px;
+  margin-left: 0px;
+  margin-right: 0px;
+  line-height: 1.428571429;
+  color: #555555;
+  width: 100%;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+	font-size:12px;
+    -ms-border-radius: 1px;
+    border-radius: 1px;
+	-webkit-border-radius: 1px;  
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -ms-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control option{ padding-left: 7px;padding-top: 4px;}
+
+.formLabel {
+    padding-left: 1%;
+}
+
+.form-control:focus {
+    border-color: #498307;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+
+.ddl-box {
+    display: block;
+    width: 100%;
+    height: 34px;
+    line-height: 1.42857;
+    color: #555;
+    vertical-align: middle;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    padding: 6px 8px;
+    font-size: 12px;
+    -ms-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    -ms-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    -webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -moz-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -ms-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -o-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.ddl-box[disabled], .ddl-box[readonly], fieldset[disabled] .ddl-box {
+    cursor: not-allowed;
+    background-color: #EEE;
+}
+
+.text-box {
+    display: block;
+    width: 100%;
+    height: 34px;
+    line-height: 1.42857;
+    color: #555;
+    vertical-align: middle;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    padding: 6px 8px;
+    font-size: 12px;
+    -ms-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    -ms-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    -webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -moz-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -ms-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    -o-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+input {
+    padding: 1px;
+    font: 9pt "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+.text-box[disabled], .text-box[readonly], fieldset[disabled] .text-box {
+    cursor: not-allowed;
+    background-color: #EEE;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+fieldset {
+    margin: 0em auto;
+    background-color: #FFF;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+    width: auto;
+    padding: 0em;
+}
+
+.single-form-display {
+    padding: 5px;
+}
+
+.logStart {
+    /*background:url(/Images/migrationgreenBig.png) 10px no-repeat  green;*/
+    margin: 0em auto;
+    background-color: #FFF;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+    width: auto;
+    padding: 0em;
+}
+
+.backDb {
+    background:url(/Images/padlock-24.png) 10px no-repeat  green;
+    width: 100%;
+}
+
+
+
+fieldset {
+    margin: 0em auto;
+    background-color: #FFF;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+    width: auto;
+    padding: 0em;
+     border: 1px solid green;
+}
+
+.newTable {
+    width: 100%; color: #333;font-family: "Segoe UI",Verdana,Helvetica,Sans-Serif;padding: 0.25em 2em 0.25em 0em;
+}
+
+.newTable th {
+    width: auto; text-align: left; padding-left: 12px;font-size: 1.3em;color: #008000;
+}
+
+.newTable tr {
+    color: black;
+}
+
+.newTable td {
+    width: auto; text-align: left;font-size: 0.99em;
+}

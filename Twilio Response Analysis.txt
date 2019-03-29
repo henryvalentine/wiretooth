@@ -1,0 +1,16 @@
+
+//ANSWERED
+Event Parameters: {"ApiVersion":"2010-04-01","Called":"+2347086923631","ParentCallSid":"CAdb708ac31b78780b01472f3f666d3d67","CallStatus":"in-progress","From":"+2347018643858","Direction":"outbound-dial","Timestamp":"Sun, 13 Dec 2015 07:40:56 +0000","AccountSid":"AC9b478e612b78783673f81208722edfd3","CallbackSource":"call-progress-events","Caller":"+2347018643858","SequenceNumber":"0","CallSid":"CA5f744b02e4c08345947a912414865815","To":"+2347086923631"}
+
+//COMPLETED
+Event Parameters: {"ApiVersion":"2010-04-01","Called":"+2347086923631","ParentCallSid":"CAdb708ac31b78780b01472f3f666d3d67","CallStatus":"completed","From":"+2347018643858","Direction":"outbound-dial","CallDuration":"7","Timestamp":"Sun, 13 Dec 2015 07:41:03 +0000","AccountSid":"AC9b478e612b78783673f81208722edfd3","CallbackSource":"call-progress-events","ApplicationSid":"APfabb935e405c96eef147e56b3255896c","Caller":"+2347018643858","SequenceNumber":"1","CallSid":"CA5f744b02e4c08345947a912414865815","To":"+2347086923631"}
+
+
+//FINAL RESPONSE......CONSIDER UNUSEFUL
+Event Parameters: {"ApiVersion":"2010-04-01","Called":"","CallStatus":"completed","Duration":"1","From":"client:+2347018643858","Direction":"inbound","CallDuration":"33","Timestamp":"Sun, 13 Dec 2015 07:41:08 +0000","AccountSid":"AC9b478e612b78783673f81208722edfd3","CallbackSource":"call-progress-events","ApplicationSid":"APfabb935e405c96eef147e56b3255896c","Caller":"client:+2347018643858","SequenceNumber":"0","CallSid":"CAdb708ac31b78780b01472f3f666d3d67","To":""}\
+
+
+
+ client.calls(parentSid).get(function (err, callRes)
+        {
+		});

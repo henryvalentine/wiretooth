@@ -1,0 +1,524 @@
+    <!-- CALLS-->
+    <div id="callDv" class="row center-container" ng-controller="callsController" ng-init="setDefaults()" >
+
+      <div class="row angular-centered">
+        <div class="row" ng-cloak ng-show="calling === true;">
+          <div class="col-md-4">
+
+          </div>
+          <div class="col-md-4" style="text-align: center">
+            <h4 id="realtime" >00 : 00 : 00</h4>
+          </div>
+        </div>
+        <br/>
+         <div class="row"  style="position: relative; z-index: 1;">
+
+          <div class="row">
+            <div class="col-md-4">
+
+              <div class="row">
+                <div class="col-md-7">
+
+                </div>
+                <div class="col-md-5 col-md-5-flg" title="{{lInfo.name}}">
+                  <img src="{{lInfo.flg_src}}" class="flagImg">
+                </div>
+              </div>
+            </div>
+            <!--<a href="#" tooltips title="Enter number to call in this format : +4400000000"></a>-->
+            <div class="col-md-4" id="phNum" ng-cloak>
+              <!--<input maxlength="21" type="text" id="numberHolder" style="font-size: 1em;" class="ion-input-select form-control" ng-keyup="getDestinationCode()" ng-paste="getDestinationCode()" placeholder="Destination(eg: +234000000)" ng-model="phone.number" />-->
+
+              <angucomplete id="productControl"
+                            placeholder="Destination(eg: Jack OR +234807600000)"
+                            pause="10" name="caller"
+                            selectedobject="selections"
+                            localdata="contacts"
+                            searchfields="name,number"
+                            titlefield="name"
+                            minlength="1" inputclass="ion-input-select form-control input"
+                            callback="setCalled" clearselection="true"/>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+          <div class="row cll-btn-dv">
+            <div class="col-md-5">
+
+            </div>
+            <div class="col-md-2">
+              <button class="btn_X ion-ios-telephone call-active cll-btn" id="call" ng-disabled="normalizing === true" ng-click="normalizeNumber()"></button> &nbsp;
+              <img src="/img/load.gif" id="norm-loder" style="display: none;" />
+            </div>
+            <div class="col-md-5">
+
+            </div>
+          </div>
+        </div>
+
+        <button  class="y call-log pN oX right-position" title="my calls" ng-click="showCallLog()" style="z-index: 105; margin-bottom: 45px">
+          <img alt="" src="/img/callLog.png">
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- CALL LOG-->
+
+    <div id="callLog" class="row call_log_overlay">
+      <div class="row modal-content">
+        <form style="width: 100%;">
+          <div class="modal-header" >
+            <a ng-click="closeCallLog()" class="closeAnchor" style="font-weight: bold">x</a>
+            <div class="row">
+              <div class="col-md-4 onepx-padding"  ng-if="callList.length > 0">
+                <a ng-click="clearCalls()" title="clear calls" style="font-size: 0.9em; cursor: pointer;color:brown; float:left"><img src="/img/cancel-24_opt.png" /></a>
+              </div>
+              <div class="col-md-4 header-shift">
+                my calls
+              </div>
+              <div class="col-md-4">
+
+              </div>
+            </div>
+          </div>
+          <div class="panel-body" style="overflow-y: auto;height: 200px; max-height: 250px;overflow-x: hidden;">
+            <ul id="callRecs">
+
+            </ul>
+          </div>
+          <div class="row" style="margin-top: 2%">
+            <div class="col-md-12">
+              <input type="text" style="font-size: 1.1em;float: left;"  class="ion-input-select form-control" ng-keyup="searchCalls(callSearch.text)"  placeholder="Search calls" ng-model="callSearch.text" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MESSAGING-->
+    <div  id="msgDv" ng-init="reset()" class="row" style="margin-bottom: 46px; display: none">
+      <div class="row">
+        <div class="item col-xs-12 col-sm-6 col-lg-4 msgContainer">
+          <div data-z="0.5" class="panel panel-default paper-shadow">
+            <div class="modal-header" >
+              <div class="row">
+                <div class="col-md-4">
+                  my messages
+                </div>
+              </div>
+            </div>
+            <div class="panel-body" style="overflow-y: auto;">
+              <ul>
+                <li ng-repeat="sms in messages">
+                  <div class="row">
+                    <di class="col">
+                      {{sms.to}}
+                    </di>
+                    <di class="col">
+                      Time : {{sms.smsInitiatedAt}} - {{sms.timeSent}}
+                    </di>
+                    <di class="col">
+                      Status : {{sms.status}}
+                    </di>
+                  </div>
+                  <div class="row">
+                    <di class="col-12">
+                      <p>
+                        {{sms.message}}
+                      </p>
+                    </di>
+                  </div>
+                  <br/>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="compose" class="row login_overlay wider">
+        <div class="row modal-content">
+          <a ng-click="closeCompose()" class="closeAnchor">x</a>
+          <form style="width: 100%;">
+            <div class="row  modal-header">
+              <div class="col-md-5">
+                Compose
+              </div>
+            </div>
+
+            <!--Single SMS-->
+            <div class="row" id="singleSms">
+              <div class="row demo2">
+                <!--<input class="form-control demo-default selectized" id="frameworks" placeholder="Reciepient(s)(eg: +234807600000, +2347023400000)"/>-->
+                <angucomplete id="smsTo"
+                              placeholder="Reciepient(s)(eg: +234807600000, +2347023400000)"
+                              pause="10"
+                              selectedobject="selectedGroups"
+                              localdata="contacts"
+                              searchfields="name,number"
+                              titlefield="name"
+                              minlength="1" inputclass="ion-input-select form-control"
+                              callback="setRecipients" clearselection="false"/>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <textarea id="smsmessage" rows="5"   class="ion-input-select form-control" style="height: 110px;min-height: 110px; max-height: 110px; font-size: 1em;width: 100%;" placeholder="Message" ng-model="msgInfo.message"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <p>
+                    <span id="remaining">0</span>/<span id="messages">0</span>
+                  </p>
+                </div>
+                <div class="col-md-8">
+                  <button ng-click="sendText()" id="sendSmsBtn" title="Send" style="float: right; vertical-align: baseline; bottom: 0;width: 20%; margin-top: 8px" class="btn_X sms-btn ion-android-send"></button>
+                </div>
+              </div>
+              <br>
+              <div class="row modal-footer" style="padding-top: 2%;margin: 0;">
+                <div class="col-md-6"  style="padding-left: 0;padding-right: 1px">
+                  <a style="float: left;cursor: pointer;" onclick="$('#singleSms').hide(); $('#bulkSms').toggle('slide')">Send bulk message >></a>
+                </div>
+                <div class="col-md-6"  style="padding-left: 0;padding-right: 1px">
+                </div>
+              </div>
+            </div>
+
+            <!--Bulk SMS-->
+            <div  id="bulkSms" style="display:  none;">
+              <div class="row" style="margin: 0;">
+                <div style="width: 100%;" class="col-md-12" ng-dropdown-multiselect options="contactGroups" selected-model="bulkMsgInfo.recipients" extra-settings="multiselectSettings"></div>
+              </div>
+              <div class="row  demo2">
+                <div class="col-md-12">
+                  <textarea id="bulkMessage" rows="5"  class="ion-input-select form-control" style="height: 110px;min-height: 110px; max-height: 110px; font-size: 1em;width: 100%;" placeholder="Message" ng-model="bulkMsgInfo.message"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <p>
+                    <span id="bulkRemaining">0</span>/<span id="bulkMessages">0</span>
+                  </p>
+                </div>
+                <div class="col-md-8">
+                  <button ng-click="sendBulkSms()" id="bulkSendSmsBtn" title="Send" style="float: right; vertical-align: baseline; bottom: 0;width: 20%; margin-top: 8px" class="btn_X sms-btn ion-android-send"></button>
+                </div>
+              </div>
+              <br>
+              <div class="row  modal-footer" style="padding-top: 2%;margin: 0;">
+                <div class="col-md-6"  style="padding-left: 0;padding-right: 1px">
+                  <a style="float: left;cursor: pointer;" onclick="$('#bulkSms').hide(); $('#singleSms').toggle('slide')"><< Send single message</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <button  class="y pN oX right-position" title="Compose" ng-click="showCompose()" style="z-index: 105; margin-bottom: 45px">
+        <img alt="" src="/img/bt_speed_dial_1x.png">
+      </button>
+    </div>
+
+    <!-- CONTACTS-->
+    <div id="contactsDv" style="margin-bottom: 46px; display: none;">
+      <div class="item col-xs-12 col-sm-6 col-lg-4 contactList">
+        <div data-z="0.5" class="panel panel-default paper-shadow">
+          <div class="modal-header" >
+            <div class="row">
+              <div class="col-md-4">
+                Contacts
+              </div>
+              <div class="col-md-8 onepx-padding">
+                <button title="Import your contacts from Google" onclick="return checkAuth()" class="btn socialLogin google ggBtn">
+                  Get Contacts from Google
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body" style="overflow-y: auto;height: 200px; max-height: 250px;overflow-y: auto;overflow-x: hidden;">
+            <ul id="contactList">
+              <li class="row" ng-repeat="contact in contactsTempate" ng-mouseenter="showTips(contact)"  ng-mouseleave="hideTips(contact)">
+                <di class="col-md-7">
+                  <a>
+                    {{contact.name}} :  {{contact.number}}
+                  </a>
+                </di>
+                <div class="col-md-5">
+                  <span style="display: none;z-index:100; position: absolute; background-color: #fff" id="cnt{{contact.id}}"><a ng-click="callContact(contact)" title="Call" style="color: #000"><img src="img/phone-2.png" /></a>&nbsp;&nbsp; <a ng-click="prepSms(contact)" title="Sms" style="color: #000"><img src="img/message-2.png" /></a> &nbsp;&nbsp;<a title="Edit Contact" style="color: #000" ng-click="editContact(contact)" ><img src="img/edit2.png" /></a>&nbsp;&nbsp;&nbsp;<a ng-click="deleteContact(contact.id)" title="Delete contact"><img src="img/delete2.png" /></a></span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="row" style="margin-top: 2%">
+            <div class="col-md-12">
+              <input type="text" style="font-size: 1.1em;float: left;"  class="ion-input-select form-control" ng-keyup="searchContact(search.text)"  placeholder="Search contacts" ng-model="search.text" />
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      <br>
+
+      <!--g-button-->
+      <!--<button ng-click="showContacts()" jsaction="jsl._" tabindex="0" role="menuitem" aria-labelledby="btariaid-424" class="y hC" jstcache="8">-->
+      <!--<img aria-hidden="true" alt="" srcset="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/bt_compose2_2x.png 2x" src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png" class="o8 a6" jstcache="0">-->
+      <!--<img aria-hidden="true" alt="" srcset="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/bt_speed_dial_2x.png 2x" src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_speed_dial_1x.png" class="o8 bY" jstcache="0">-->
+      <!--</button>-->
+
+      <button  class="y pN oX right-position" title="manage contacts" ng-click="showContacts()" style="z-index: 105; margin-bottom: 45px">
+        <img alt="" src="/img/bt_speed_dial_1x.png">
+      </button>
+
+      <div id="contacts" class="login_overlay wider2">
+        <div class="row modal-content">
+          <a ng-click="closeContacts()" class="closeAnchor">x</a>
+          <form style="width: 100%;">
+
+            <div class="row" id="cntC">
+              <div class="row  modal-header">
+                <div class="col-md-6">
+                  Manage Contact
+                </div>
+              </div>
+
+              <div class="row" style="margin: 0;">
+                <div class="col-md-12">
+                  <div class="row">
+                    <input type="text" maxlength="16" style="font-size: .99em;" class="ion-input-select form-control" placeholder="Name" ng-model="contact.name" />
+                  </div>
+                  <div class="row"  style="padding-top: 5%">
+                    <input type="text" style="font-size: .99em;"  maxlength="21" class="ion-input-select form-control"  placeholder="Phone(eg: +234000000)" ng-model="contact.number" />
+                  </div>
+                  <div class="row" style="padding-top: 5%">
+                    <select class="ion-input-select form-control" ng-options="c as c.name for c in contactGroups track by c.id" ng-model="contact.group">
+                      <option value="">-- add to contact group --</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="padding-top: 5%">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                  <button class="btn_X btn-success"  ng-click="processContact()" style="float: right; width: 100%;">Save</button>
+                </div>
+              </div>
+              <br>
+              <div class="row  modal-footer" style="padding-top: 2%;margin: 0;">
+                <div class="col-md-6"  style="padding-left: 0;padding-right: 1px">
+                  <a style="float: left;cursor: pointer;" onclick="$('#cntC').hide(); $('#groups').toggle('slide')">Contact Groups >></a>
+                </div>
+                <div class="col-md-6"  style="padding-left: 0;padding-right: 1px">
+                  <a style="float: left;cursor: pointer;" onclick="$('#cntC').hide(); $('#bulkContact').toggle('slide')">Upload contacts >></a>
+                </div>
+              </div>
+            </div>
+
+            <!--Contact Groups-->
+            <div  id="groups" style="display:  none;">
+              <div class="modal-header row" >
+                <div class="col-md-5">
+                  <h4>Contact Groups</h4>
+                </div>
+                <div class="col-md-7">
+                  <select class="ion-input-select form-control" ng-options="c as c.name for c in contactGroups track by c.id" ng-model="groupToEdit" ng-change="editGroup(groupToEdit)">
+                    <option value="">-- existing groups --</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row" style="margin: 0;">
+                <div class="col-md-12" ng-class="{'col-md-11' : grp.id.length > 0, 'col-md-12' : grp.id < 1 }" style="padding-left: 0;padding-right: 1px">
+                  <input type="text" style="font-size:1.1em;" class="ion-input-select form-control" placeholder="Group" ng-model="grp.name" />
+                </div>
+                <div class="col-md-1" ng-if="grp.id.length > 0" style="padding-left: 0;padding-right: 0px">
+                  <a title="delte" style="float: left;cursor: pointer;"  ng-click=" deleteGroup()"> <img src="/img/delete2.png" style="background-size: 16px"></a>
+                </div>
+              </div>
+              <br>
+              <div class="row  modal-footer" style="padding-top: 5%;margin: 0;">
+                <div class="col-md-4"  style="padding-left: 0;padding-right: 1px">
+                  <a style="float: left;cursor: pointer;"  onclick="$('#groups').hide();$('#cntC').toggle('slide');"> << Contacts </a>
+                </div>
+                <div class="col-md-5"  style="padding-left: 0;padding-right: 1px">
+                  <button class="btn_X btn-success" ng-click="processGroup()" ng-disabled="processing===true;" style="float: right;">Save</button>
+                </div>
+              </div>
+            </div>
+
+            <!--Upload Contacts-->
+            <div  id="bulkContact" style="display:  none;">
+              <div class="modal-header row" >
+                <div class="col-md-9">
+                  <h4>Upload Contacts</h4>
+                </div>
+              </div>
+              <form action="http://localhost:3000/api/contacts/uploadContacts" method="POST" enctype="multipart/form-data">
+                <div class="row" >
+                  <div class="col-md-12">
+                    <select class="ion-input-select form-control" ng-options="g as g.name for g in contactGroups track by g.id" ng-model="massContact.bulkGroup">
+                      <option value="">-- select contact group(optional) --</option>
+                    </select>
+                    <input type="hidden" name="userId" ng-model="wallet.userId"/>
+                    <input type="hidden" name="groupId" ng-model="massContact.bulkGroup.id"/>
+                  </div>
+                </div>
+                <div class="row" style="padding-top: 5%;margin: 0;">
+                  <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+                    <input type="file" name="file" style="font-size:1.1em;" onchange="angular.element(this).scope().setFile(this);" class="ion-input-select form-control" placeholder="select file(eg: contacts.xlsx)" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                  </div>
+                </div>
+                <div class="row" style="padding-top: 7%">
+                  <div class="col-md-3">
+
+                  </div>
+                  <div class="col-md-9">
+                    <button class="btn_X btn-success"  ng-click="processBulkContact()" style="float: right; width: 70%;">Save</button>
+                  </div>
+                </div>
+              </form>
+              <br>
+              <div class="row modal-footer" style="padding-top: 8%;margin: 0;">
+                <div class="col-md-4"  style="padding-left: 0;padding-right: 1px">
+                  <a style="float: left;cursor: pointer;"  onclick=" $('#bulkContact').hide();$('#cntC').toggle('slide');"> << Contacts </a>
+                </div>
+                <div class="col-md-8">
+                  <a class="btn btn-default btnAdd" title="download Bulk Contacts Template" style="float: right;cursor: pointer;"  href="/uploads/bulkTemplates/contacts.xlsx">Download Template</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="flashMsg" class="row login_overlay wider">
+        <div class="row modal-content">
+          <a ng-click="closeFlashCompose()" class="closeAnchor">x</a>
+          <form style="width: 100%;">
+            <div class="row  modal-header">
+              <div class="col-md-5">
+                Compose
+              </div>
+            </div>
+            <div class="row">
+              <div class="row demo2">
+                Send To : <h4 id="flashMsger"></h4>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <textarea id="flashMessage" rows="5"   class="ion-input-select form-control" style="height: 110px;min-height: 110px; max-height: 110px; font-size: 1em;width: 100%;" placeholder="Message" ng-model="flashMsgInfo.message"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <p>
+                    <span id="remaining2">0</span>/<span id="messages2">0</span>
+                  </p>
+                </div>
+                <div class="col-md-8">
+                  <button ng-click="sendFlashText()" id="sendFlashSmsBtn" title="Send" style="float: right; vertical-align: baseline; bottom: 0;width: 20%; margin-top: 8px" class="btn_X sms-btn ion-android-send"></button>
+                </div>
+              </div>
+              <br>
+              <div class="row modal-footer" style="padding-top: 2%;margin: 0;">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- WALLET-->
+    <div id="wallet" style="margin-bottom: 46px; display: none;">
+      <div class="item col-xs-12 col-sm-6 col-lg-4 msgContainer">
+        <div data-z="0.5" class="panel panel-default paper-shadow">
+          <div class="modal-header" >
+            <div class="row">
+              <div class="col-md-7">
+                Wallet
+              </div>
+              <div class="col-md-5">
+                <h5>Balance : <strong>&#8358;{{wallet.balance | currency:"":2}}</strong></h5>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body" style="overflow-y: auto;">
+            <table  style="margin-top: 2%">
+              <tr style="text-align:center">
+                <td>
+                  <label>Amount(&#8358;)</label>
+                </td>
+                <td>
+                  <label>Date</label>
+                </td>
+                <td>
+                  <label>Status</label>
+                </td>
+              </tr>
+              <tr ng-repeat="history in histories"  style="text-align:center">
+                <td>
+                  <label>{{history.amount | number:0}}</label>
+                </td>
+                <td>
+                  <label>{{history.dateCompleted}}</label>
+                </td>
+                <td>
+                  <label>{{history.status}}</label>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <button  class="y pN oX right-position" title="Fund wallet" ng-click="showWallet()" style="z-index: 105; margin-bottom: 45px">
+        <img alt="" src="/img/bt_speed_dial_1x.png">
+      </button>
+    </div>
+
+
+  <!--FLASH CALLEER-->
+    <div id="flashCall" class="row login_overlay">
+      <div class="row modal-content">
+        <a ng-click="closeflashCall()" class="closeAnchor">x</a>
+        <form style="width: 100%;">
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8" style="text-align: center">
+              <h4 id="realtime2" >00 : 00 : 00</h4>
+            </div>
+            <div class="col-md-2">
+            </div>
+          </div>
+          <div class="row"style="margin-top: 10%; margin-bottom: 8%">
+             <div class="col-md-4">
+              <h4> Call :: </h4>
+             </div>
+
+            <div class="col-md-8" style="padding-left: 1px">
+              <h4 id="flashCaller" style="float: left; color: #008000"></h4>
+            </div>
+
+            </div>
+
+          <div class="row" style="margin-top: 2%;">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+              <button class="btn_X ion-ios-telephone call-active" id="flashCallerBtn" ng-disabled="normalizing === true" ng-click="normalizeNumber2()" style="width: 60%; float: right; margin-right: 10%; "></button> &nbsp;
+              <img src="/img/load.gif" id="norm-flasher" style="display: none;" />
+            </div>
+            <div class="col-md-2">
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>

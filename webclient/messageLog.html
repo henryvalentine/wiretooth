@@ -1,0 +1,40 @@
+<div id="contacts-view" ng-controller="defaultController">
+
+  <div class="modal-header" >
+    <div class="row">
+      <div class="col-md-4">
+        My Message History
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-80">
+      <ul>
+        <li ng-repeat="sms in messages">
+            <div class="row">
+              <di class="col">
+                Recipient : {{sms.to}}
+              </di>
+              <di class="col">
+                Time sent : {{sms.smsInitiatedAt}}
+              </di>
+              <di class="col">
+               Time delivered : {{sms.timeSent}}
+              </di>
+              <di class="col">
+               Status : {{sms.status}}
+              </di>
+            </div>
+          <div class="row">
+            <di class="col-12">
+              <p>
+                {{sms.message}}
+              </p>
+            </di>
+          </div>
+          <br/>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

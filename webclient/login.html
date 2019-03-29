@@ -1,0 +1,94 @@
+<div id="contacts-view" class="modal-content modal-view angular-centered" ng-controller="defaultController">
+
+  <!--Log in-->
+  <div id="login">
+    <div class="row modal-header" >
+      <div class="col-md-12">
+        login
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+        <input type="email" style="font-size: 1.1em;" class="ion-input-select form-control" placeholder="Email" ng-model="auth.email" />
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+        <input type="password" style="font-size: 1.1em;" class="ion-input-select form-control" placeholder="Password" ng-model="auth.password" />
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+        <a style="float: left;cursor: pointer;" onclick="$('#login').hide(); $('#forgotpassword').toggle('slide');$('#singup').hide()">I forgot my password</a>
+      </div>
+      <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+
+      </div>
+      <div class="col-md-3"  style="padding-left: 0;padding-right: 1px">
+        <button onclick="login()" class="btn_X">login</button>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-2"  style="padding-left: 0;padding-right: 1px">
+        <a style="float: left;cursor: pointer;" onclick="$('#login').hide(); $('#signup').toggle('slide'); $('#forgotpassword').hide();"> sign up </a>
+      </div>
+    </div>
+  </div>
+
+  <!--Sign up-->
+  <div id="signup" style="display: none;">
+    <div class="row modal-header" >
+      <div class="col-md-6">
+        sign up
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+        <input type="email" style="font-size: .99em;" class="ion-input-select form-control" placeholder="Email" ng-model="signupAuth.email" />
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+        <input type="text" maxlength="16" style="font-size: .99em;" class="ion-input-select form-control" placeholder="Phone Number" ng-model="signupAuth.phone" />
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+        <input type="password" style="font-size:1.1em;" class="ion-input-select form-control" placeholder="Password" ng-model="signupAuth.password" />
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-4"  style="padding-left: 0;padding-right: 1px">
+        <a style="float: left;cursor: pointer;"  onclick="$('#signup').hide(); $('#login').toggle('slide');$('#forgotpassword').hide();"> log in </a>
+      </div>
+      <div class="col-md-4"  style="padding-left: 0;padding-right: 1px">
+
+      </div>
+      <div class="col-md-4"  style="padding-left: 0;padding-right: 1px">
+        <button ng-click="signup()" class="btn_X">continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!--Request Password-->
+  <div  id="forgotpassword" style="display:  none;">
+    <div class="modal-header" >
+      <div class="col-md-6">
+        request new password
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-12"  style="padding-left: 0;padding-right: 1px">
+        <input type="email" style="font-size:1.1em;" class="ion-input-select form-control" placeholder="Email" ng-model="passAuth.email" />
+      </div>
+    </div>
+    <div class="row" style="padding-top: 2%;margin: 0;">
+      <div class="col-md-2"  style="padding-left: 0;padding-right: 1px">
+        <a style="float: left;cursor: pointer;"  onclick=" $('#forgotpassword').hide();$('#login').toggle('slide');$('#singup').hide()"> log in </a>
+      </div>
+      <div class="col-md-2"  style="padding-left: 0;padding-right: 1px">
+        <button class="btn_X" ng-click="getpassword()">continue</button>
+      </div>
+    </div>
+  </div>
+</div>

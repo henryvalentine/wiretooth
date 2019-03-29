@@ -1,0 +1,44 @@
+
+<div  ng-controller="defaultController"  ng-init="getVerificationStatus()">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>
+                Phone verification Status
+            </h4>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-8">
+            <div ng-if="ver.successful===true">
+                <div class="row">
+                    <h5>
+                        Thanks for registering on WireTooth. Enjoy the endless possibilities!
+                    </h5>
+                </div>
+            </div>
+            <div class="row" ng-if="ver.successful===false">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>
+                            Your registration could not be completed.
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-size: 0.8em; font-weight: normal">Reason : </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="padding-left: 2px;padding-right: 2px">
+                            <label style="font-size: 1em; color: #008000;">{{ver.message}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+</div>
+<br/>
+

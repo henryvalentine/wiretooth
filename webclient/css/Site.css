@@ -1,0 +1,265 @@
+﻿
+body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: white; /*url('images/dpr_bg6.png')*/
+   
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+.rightFloat {
+    float: right;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+.loginrow {
+  background-image: url('images/dpr_bg_login.png');
+   border-radius: 10px;
+   opacity: 1.0;
+}
+.logindesc{
+   
+   border-radius: 10px;
+   opacity: 1.0;
+}
+
+.logindiv{
+   
+   border-radius: 10px;
+    margin-top: 40px;
+   
+}
+.mynavbarbg {
+   background-color:#00ff21;
+   border-radius: 10px;
+   
+}
+.compname{
+   
+    background-image: url('images/coatofarms.jpg');
+    
+}
+.col-md-4 {
+    
+    border-radius:10px;
+   
+   
+    
+}
+.myrow1 {
+  
+   border-radius: 10px;
+    margin-top:10px;
+    
+}
+.myrow2 {
+   
+   border-radius: 10px;
+    margin-top:10px;
+    
+}
+.myrow3 {
+  
+   border-radius: 10px;
+    margin-top:10px;
+    
+}
+.colimg1 {
+    background-image: url('images/devops.png');
+    background-repeat:no-repeat;
+    height:150px;
+}
+.colimg2 {
+    background-image: url('images/iocs.png');
+    background-repeat:no-repeat;
+    height:150px;
+}
+.colimg3 {
+    background-image: url('images/contractors.png');
+    background-repeat:no-repeat;
+    height:150px;
+}
+.shadow {
+  -moz-box-shadow:    1px 1px 3px 4px #008000;
+  -webkit-box-shadow: 1px 1px 3px 4px #008000;
+  box-shadow:         1px 1px 3px 4px #008000;
+}
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+footer {
+    background:none;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+    
+}
+.col-md-1 img{
+    float: right;
+
+}
+.radioLabel
+{
+    float: left;
+}
+.rmVImg
+{
+    float: left;
+}
+
+input, textarea
+{
+    padding-left: 50px;
+}
+
+ .ffxzcv {
+        padding-left: 0px;
+        padding-right: 19px;
+
+    }
+
+    .ffxzcvw
+     {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+     .kkl {
+        padding-left: 0px;
+    }
+     .kkl2 {
+        
+        padding-right: 0px;
+    }
+     .mediumFormWith {
+         width: 50%
+     }
+
+     .green {
+         color: #008000;
+     }
+
+.tt-dropdown-menu
+{
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 8px 0;
+    width: 100%;
+}
+.tt-dropdown-menu, .gist 
+{
+    text-align: left;
+}
+
+.typeahead {
+    background-color: #fff;
+}
+.typeahead, .tt-query, .tt-hint
+ {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 24px;
+    height: 30px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 100%;
+}
+
+.scrollable-dropdown-menu .tt-dropdown-menu
+{
+max-height: 150px;
+overflow-y: auto;
+}
+
+.tt-query,
+.tt-hint {
+    width: 100%;
+    height: 30px;
+    padding: 8px 12px;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    outline: none;
+}
+ .tt-input {
+    width: 100%;
+}
+ .twitter-typeahead{width: 100%}
+.tt-query {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+    color: #999
+}
+
+.tt-dropdown-menu {
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.tt-suggestion :hover {
+    color: #fff;
+    background-color: #008000;
+    cursor: pointer;
+
+}
+
+
+.ddasxz{
+            text-decoration: none;
+            color: #008000;
+           
+        }
+
+    .liveOnView {
+        
+        background-color: #008000;
+        color: whitesmoke;
+        text-decoration: none;
+    }

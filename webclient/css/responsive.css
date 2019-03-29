@@ -1,0 +1,478 @@
+/* SCREEN RESOLUTIONS -----------------------*/
+
+/*----------------------   LOWEST SCREENS RESOLUTION ------------------------------------*/
+@media screen and (max-width:401px)
+{
+    .ion-log-in{margin-top: -30px !important}
+    .header-shift
+    {
+        margin-left: 29%;
+        padding-right: 0;
+        text-align: center;
+        width: 20px;
+    }
+    #callDv
+    {
+        /*margin-top: 1%  !important;*/
+        /*align-content: center !important;*/
+    }
+    .dropdown-menu{
+        background-clip: padding-box !important;
+        background-color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 4px !important;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176) !important;
+        display: none;
+        float: left;
+        font-size: 14px;
+        left: 0;
+        list-style: outside none none !important;
+        margin: 35px 0px 0px -100px !important;
+        min-width: 160px;
+        padding: 5px 0 !important;
+        position: absolute !important;
+        top: 100% !important;
+        z-index: 9999999999 !important;
+    }
+
+    .login_overlay{width: 280px !important;}
+    .call_log_overlay{width: 280px !important;}
+
+    #prof-container
+    {
+        margin-top: -30px !important;
+    }
+
+    .y {
+        box-shadow: none !important;
+        margin-bottom: -3px !important;
+        height: 30px !important;
+        width: 30px !important;
+    }
+
+    .google
+    {
+        text-indent: 20px !important;
+        width: 105% !important;
+
+    }
+
+    .col-md-5-flg
+    {
+        min-height: 1px;
+        padding: 0 !important;
+        position: absolute !important;
+        margin-top: 60px !important;
+        float: right !important;
+        margin-left: 2px;
+        width: 20%;
+        z-index: 3;
+    }
+
+    /*.flagImg*/
+    /*{*/
+        /*width: 100% !important;*/
+        /*height:20px !important;*/
+        /*margin-top:-10px !important;*/
+    /*}*/
+
+    .flagImg
+    {
+        width: 60% !important;
+        height:30px !important;
+        margin-top:-10px !important;
+    }
+
+    .cll-btn
+    {
+        float: right;
+        margin-right: 20%;
+        width: 40%;
+    }
+
+    .cll-btn-dv
+    {
+        margin-top:5%;
+    }
+
+    .footer-list {
+        margin-left: 2%;
+        position: absolute;
+    }
+
+    .form-control::-webkit-input-placeholder {
+        font-size: 0.8em !important;
+    }
+
+    .form-control:-moz-placeholder { /* Firefox 18- */
+        font-size: 0.8em !important;
+    }
+
+    .form-control::-moz-placeholder {  /* Firefox 19+ */
+        font-size: 0.8em !important;
+    }
+
+    .form-control:-ms-input-placeholder {
+        font-size: 0.8em !important;
+    }
+
+}
+
+@media screen and (min-width: 402px) and (max-width: 528px)
+{
+
+    .ion-log-in{margin-top: -30px !important}
+    .header-shift
+    {
+        margin-left: 29%;
+        padding-right: 0;
+        text-align: center;
+        width: 20px;
+    }
+    .dropdown-menu{
+        background-clip: padding-box !important;
+        background-color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 4px !important;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176) !important;
+        display: none;
+        float: left;
+        font-size: 14px;
+        left: 0;
+        list-style: outside none none !important;
+        margin: 35px 0px 0px -100px !important;
+        min-width: 160px;
+        padding: 5px 0 !important;
+        position: absolute !important;
+        top: 100% !important;
+        z-index: 9999999999 !important;
+    }
+
+    .login_overlay{width: 280px !important;}
+    .call_log_overlay{width: 280px !important;}
+
+    #prof-container
+    {
+        margin-top: -30px !important;
+    }
+    .col-md-5-flg
+    {
+        float: right !important;
+        margin-left: 18%;
+        margin-top: 60px !important;
+        min-height: 1px;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 15%;
+        z-index: 3;
+    }
+
+    .flagImg
+    {
+        width: 50% !important;
+        height:25px !important;
+        margin-top:-10px !important;
+    }
+
+    .cll-btn
+    {
+        float: right;
+        margin-right: 30%;
+        width: 30%;
+    }
+
+    .footer-list {
+        margin-left: 20%;
+        position: absolute;
+    }
+
+
+    #productControl_value
+    {
+        margin-left: 18%;
+        width: 60%;
+    }
+
+    .form-control::-webkit-input-placeholder {
+        font-size: 0.9em !important;
+    }
+
+    .form-control:-moz-placeholder { /* Firefox 18- */
+        font-size: 0.9em !important;
+    }
+
+    .form-control::-moz-placeholder {  /* Firefox 19+ */
+        font-size: 0.9em !important;
+    }
+
+    .form-control:-ms-input-placeholder {
+        font-size: 0.9em !important;
+    }
+
+}
+
+@media screen and (min-width: 529px) and (max-width: 572px)
+{
+    .ion-log-in{margin-top: -30px !important}
+    .header-shift
+    {
+        margin-left: 29%;
+        padding-right: 0;
+        text-align: center;
+        width: 20px;
+    }
+    .dropdown-menu{
+        background-clip: padding-box !important;
+        background-color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 4px !important;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176) !important;
+        display: none;
+        float: left;
+        font-size: 14px;
+        left: 0;
+        list-style: outside none none !important;
+        margin: 35px 0px 0px -100px !important;
+        min-width: 160px;
+        padding: 5px 0 !important;
+        position: absolute !important;
+        top: 100% !important;
+        z-index: 9999999999 !important;
+    }
+
+    .login_overlay{width: 280px !important;}
+    .call_log_overlay{width: 280px !important;}
+
+    #prof-container
+    {
+        margin-top: -30px !important;
+    }
+    .col-md-5-flg
+    {
+        float: right !important;
+        margin-top: 55px !important;
+        min-height: 1px;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 15%;
+        margin-left: 90px;
+        z-index: 3;
+    }
+
+    #productControl_value
+    {
+        margin-left: 15%;
+        width: 70%;
+    }
+
+    .cll-btn
+    {
+        float: right;
+        margin-right: 30%;
+        width: 30%;
+    }
+
+    .footer-list {
+        margin-left: 10%;
+        position: absolute;
+    }
+
+    .form-control::-webkit-input-placeholder {
+        font-size: 1em !important;
+    }
+
+    .form-control:-moz-placeholder { /* Firefox 18- */
+        font-size: 1em !important;
+    }
+
+    .form-control::-moz-placeholder {  /* Firefox 19+ */
+        font-size: 1em !important;
+    }
+
+    .form-control:-ms-input-placeholder {
+        font-size: 1em !important;
+    }
+
+}
+
+@media screen and (min-width: 573px) and (max-width: 768px)
+{
+    .ion-log-in{margin-top: -30px !important}
+    .header-shift
+    {
+        margin-left: 29%;
+        padding-right: 0;
+        text-align: center;
+        width: 20px;
+    }
+    .dropdown-menu{
+        background-clip: padding-box !important;
+        background-color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 4px !important;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176) !important;
+        display: none;
+        float: left;
+        font-size: 14px;
+        left: 0;
+        list-style: outside none none !important;
+        margin: 35px 0px 0px -100px !important;
+        min-width: 160px;
+        padding: 5px 0 !important;
+        position: absolute !important;
+        top: 100% !important;
+        z-index: 9999999999 !important;
+    }
+
+    .login_overlay{width: 280px !important;}
+    .call_log_overlay{width: 280px !important;}
+
+    #prof-container
+    {
+        margin-top: -30px !important;
+    }
+    .col-md-5-flg
+    {
+        float: right !important;
+        margin-top: 50px !important;
+        min-height: 1px;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 15%;
+        margin-left: 23%;
+        z-index: 3;
+    }
+
+    #productControl_value
+    {
+        margin-left: 25%;
+        width: 50%;
+    }
+
+    .cll-btn
+    {
+        float: right;
+        margin-right: 35%;
+        width: 20%;
+    }
+
+    .footer-list {
+        margin-left: 30%;
+        position: absolute;
+    }
+
+    .form-control::-webkit-input-placeholder {
+        font-size: 1em !important;
+    }
+
+    .form-control:-moz-placeholder { /* Firefox 18- */
+        font-size: 1em !important;
+    }
+
+    .form-control::-moz-placeholder {  /* Firefox 19+ */
+        font-size: 1em !important;
+    }
+
+    .form-control:-ms-input-placeholder {
+        font-size: 1em !important;
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 991px)
+{
+    .ion-log-in{margin-top: -30px !important}
+    .header-shift
+    {
+        margin-left: 29%;
+        padding-right: 0;
+        text-align: center;
+        width: 20px;
+    }
+    .dropdown-menu{
+        background-clip: padding-box !important;
+        background-color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.15) !important;
+        border-radius: 4px !important;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176) !important;
+        display: none;
+        float: left;
+        font-size: 14px;
+        left: 0;
+        list-style: outside none none !important;
+        margin: 35px 0px 0px -100px !important;
+        min-width: 160px;
+        padding: 5px 0 !important;
+        position: absolute !important;
+        top: 100% !important;
+        z-index: 9999999999 !important;
+    }
+
+    .login_overlay{width: 280px !important;}
+    .call_log_overlay{width: 280px !important;}
+
+    #prof-container
+    {
+        margin-top: -30px !important;
+    }
+    .col-md-5-flg
+    {
+        float: right !important;
+        margin-left: 12%;
+        margin-top: 1px !important;
+        min-height: 1px;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 15%;
+        z-index: 3;
+    }
+
+    .flagImg {
+        border: medium none;
+        bottom: 0;
+        box-shadow: 0.4px 0.4px 0.4px 0.4px rgba(0, 0, 0, 0.04);
+        display: block;
+        float: right;
+        height: 32px;
+        padding-bottom: 0;
+        padding-left: 0;
+        top: 0;
+        vertical-align: bottom;
+        width: 30%;
+    }
+
+    #productControl_value
+    {
+        margin-left: 30%;
+        width: 40%;
+    }
+
+    .cll-btn
+    {
+        float: right;
+        margin-right: 45%;
+        width: 10%;
+    }
+
+    .footer-list {
+        margin-left: 35%;
+        position: absolute;
+    }
+
+    .form-control::-webkit-input-placeholder {
+        font-size: 1em !important;
+    }
+
+    .form-control:-moz-placeholder { /* Firefox 18- */
+        font-size: 1em !important;
+    }
+
+    .form-control::-moz-placeholder {  /* Firefox 19+ */
+        font-size: 1em !important;
+    }
+
+    .form-control:-ms-input-placeholder {
+        font-size: 1em !important;
+    }
+
+}

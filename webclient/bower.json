@@ -1,0 +1,45 @@
+{
+  "name": "wiretooth.io",
+  "description": "web & mobile based communications",
+  "main": "main.js",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "calls",
+    "messaging",
+    "bulk",
+    "messaging"
+  ],
+  "authors": [
+    "wireToth"
+  ],
+  "license": "MIT",
+  "homepage": "wiretooth.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-resource": "~1.4.8",
+    "angular-selectize2": "~3.0.1",
+    "angular-animate": "~1.4.8",
+    "angular-route": "~1.4.7",
+    "html5-boilerplate": "~5.2.0",
+    "angular-bootstrap": "~0.14.3",
+    "angularjs-dropdown-multiselect": "~1.5.2",
+    "Ionicons": "ionicons#~2.0.1",
+    "ng-file-upload-shim": "~10.0.2",
+    "angular-tooltips": "~0.1.25",
+    "underscore": "~1.8.3",
+    "ng-file-upload": "~10.0.2",
+    "angular-cookies": "~1.4.8"
+  }
+}

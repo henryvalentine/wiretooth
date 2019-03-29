@@ -1,0 +1,64 @@
+
+<div ng-init="getResParams()">
+    <div class="row ">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>
+                       {{transaction.message}}
+                    </h4>
+                </div>
+            </div>
+            <div ng-if="transaction.successful===true">
+                <div class="row">
+                    <h5>
+                        Thanks for patronizing WireTooth. The details of your transaction is shown below.
+                    </h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3" style="padding-left: 2px;padding-right: 2px">
+                        <label style="font-size: 1em; font-weight: normal">Wallet new balance : </label>
+                    </div>
+                    <div class="col-md-9" style="padding-left: 2px;padding-right: 2px">
+                        <label style="font-size: 1em; color: #008000;">&#8358;{{transaction.totalBalance}}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" style="padding-left: 2px;padding-right: 2px">
+                        <label style="font-size: 1em; font-weight: normal">Date Updated : </label>
+                    </div>
+                    <div class="col-md-9" style="padding-left: 2px;padding-right: 2px">
+                        <label style="font-size: 1em; color: #008000;">{{transaction.date}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-if="transaction.successful===false">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>
+                            Transaction could not be concluded. Please review the reason stated below.
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-size: 0.8em; font-weight: normal">Reason : </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="padding-left: 2px;padding-right: 2px">
+                            <label style="font-size: 1em; color: #008000;">{{transaction.error}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+</div>
+<br/>
+
